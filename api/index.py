@@ -1,9 +1,5 @@
-from http.server import BaseHTTPRequestHandler
-from phishingkiller import start_proces
-import threading
-    
 from flask import Flask
-from phisingkiller import start_proces
+from phishingkiller import start_proces
 import threading
 app = Flask(__name__)
 
