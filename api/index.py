@@ -5,14 +5,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():    
-    t = threading.Thread(name='start_proces', target=start_proces)
-    t.setDaemon(True)
-    t.start()
     return 'Hello, world! /strat to start and /state for state'
 
 @app.route('/start')
 def start():
-    t = threading.Thread(name='start_process', target=start_process, args=(self.wfile.write,))
+    t = threading.Thread(name='start_process', target=start_process, args=(print,))
     t.setDaemon(True)
     t.start()
     return 'Starting...'
