@@ -6,7 +6,7 @@ import string
 from multiprocessing.pool import ThreadPool as Pool
 
 printfun = print
-
+msg = ""
 
 def get_random_string(length):
   # choose from all lowercase letter
@@ -60,6 +60,9 @@ def sendData(baseurl, currtime, id, pwd, phone, state):
   except Exception as e:
     printfun(str(e))
 
+def getLatestValue():
+  global msg
+  return msg
 
 def task(slpitdata, counter):
 
