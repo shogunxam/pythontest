@@ -34,8 +34,5 @@ class handler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type','text/plain')
             self.end_headers()
-            self.wfile.write('Hello, world!'.encode('utf-8'))
-            t = threading.Thread(name='start_process', target=start_process, args=(self.wfile.write,))
-            t.setDaemon(True)
-            t.start()
+            self.wfile.write('Hello, world! /strat to start /state for state '.encode('utf-8'))
         return
