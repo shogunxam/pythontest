@@ -106,7 +106,7 @@ def task(slpitdata, counter):
 
   print(counter, id, pwd, phone)
 
-def start_process()
+def start_process():
   print("Start sending fake data...")
   poolsize = 5
   pool = Pool(poolsize)
