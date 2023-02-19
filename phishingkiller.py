@@ -5,6 +5,8 @@ import time
 import string
 from multiprocessing.pool import ThreadPool as Pool
 
+printfun = print
+
 
 def get_random_string(length):
   # choose from all lowercase letter
@@ -56,7 +58,7 @@ def sendData(baseurl, currtime, id, pwd, phone, state):
       id) + "&P=" + pwd + "&T=" + phone + "&S=" + state
     urllib.request.urlopen(url).read()
   except Exception as e:
-    print(e)
+    printfun(str(e))
 
 
 def task(slpitdata, counter):
@@ -104,16 +106,23 @@ def task(slpitdata, counter):
           sendData(baseurl, currtime, id, pwd, phone, "WAIT")
       sendData(baseurl, currtime, id, pwd, phone, "WAIT")
 
-  print(counter, id, pwd, phone)
+  msg = str(counter) + " " + id + " " + pwd + " " + phone
+  printfun(msg)
 
-def start_process():
+
+def start_process(outputfun):
+  global printfun
+  printfun = outputfun
   print("Start sending fake data...")
   poolsize = 5
   pool = Pool(poolsize)
   counter = 0
   while True:
     try:
-      pool.apply_async(task,args=(False,counter,))
+      pool.apply_async(task, args=(
+        False,
+        counter,
+      ))
     except Exception as e:
       print(e)
     counter = counter + 1
@@ -123,5 +132,6 @@ def start_process():
       pool.join()
       pool = Pool(poolsize)
 
+
 if __name__ == "__main__":
-    start_process()
+  start_process(print)
