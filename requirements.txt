@@ -1,1 +1,2 @@
 random_italian_person
+Flask==2.2.2
