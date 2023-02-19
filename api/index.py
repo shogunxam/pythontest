@@ -12,7 +12,7 @@
 
 
 from http.server import BaseHTTPRequestHandler
-from phishingkiller import start_proces
+from phishingkiller import start_process
 import threading
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
