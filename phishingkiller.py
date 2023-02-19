@@ -6,7 +6,7 @@ import string
 from multiprocessing.pool import ThreadPool as Pool
 
 printfun = print
-msg = ""
+msg = "None"
 
 def get_random_string(length):
   # choose from all lowercase letter
@@ -109,8 +109,10 @@ def task(slpitdata, counter):
           sendData(baseurl, currtime, id, pwd, phone, "WAIT")
       sendData(baseurl, currtime, id, pwd, phone, "WAIT")
 
-  msg = str(counter) + " " + id + " " + pwd + " " + phone
-  printfun(msg)
+  global msg
+  localmsg =  str(counter) + " " + id + " " + pwd + " " + phone
+  msg = localmsg
+  printfun(localmsg)
 
 
 def start_process(outputfun):
