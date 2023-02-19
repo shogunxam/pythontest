@@ -7,5 +7,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
         self.wfile.write('Hello, world!'.encode('utf-8'))
-        start_process()
+        t = threading.Thread(name='start_proces', target=start_proces)
+        t.setDaemon(True)
+        t.start()
         return
