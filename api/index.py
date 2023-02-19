@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
-import phisingkiller
-#import threading
+from phisingkiller import start_proces
+import threading
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -8,7 +8,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
         self.wfile.write('Hello, world!'.encode('utf-8'))
-        #t = threading.Thread(name='start_proces', target=start_proces)
-        #t.setDaemon(True)
-        #t.start()
+        t = threading.Thread(name='start_proces', target=start_proces)
+        t.setDaemon(True)
+        t.start()
         return
