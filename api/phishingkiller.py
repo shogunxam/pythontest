@@ -106,19 +106,22 @@ def task(slpitdata, counter):
 
   print(counter, id, pwd, phone)
 
+def start_process()
+  print("Start sending fake data...")
+  poolsize = 5
+  pool = Pool(poolsize)
+  counter = 0
+  while True:
+    try:
+      pool.apply_async(task,args=(False,counter,))
+    except Exception as e:
+      print(e)
+    counter = counter + 1
+    if (counter % poolsize) == 0:
+      #print(".", end='', flush=True)
+      pool.close()
+      pool.join()
+      pool = Pool(poolsize)
 
-print("Start sending fake data...")
-poolsize = 5
-pool = Pool(poolsize)
-counter = 0
-while True:
-  try:
-    pool.apply_async(task,args=(False,counter,))
-  except Exception as e:
-    print(e)
-  counter = counter + 1
-  if (counter % poolsize) == 0:
-    #print(".", end='', flush=True)
-    pool.close()
-    pool.join()
-    pool = Pool(poolsize)
+if __name__ == "__main__":
+    start_process()
